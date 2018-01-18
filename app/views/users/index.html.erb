@@ -3,13 +3,17 @@
     <tr>
       <th scope="col">Email</th>
       <th scope="col">Image [BASE64 string]</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
       <tr>      
-        <td><%= user.email %></td>
-        <td><%= user.image %></td>      
+        <td class="col-md-2"><%= user.email %></td>
+        <td class="col-md-8"><%= user.image %></td>    
+        <td class="col-md-2"><%= link_to 'Edit', edit_user_path(user.id) %> <%= link_to "delete", user, method: :delete,
+                                                                           data: { confirm: "You sure?" } %> 
+        </td>  
       </tr>
     <% end %>
   </tbody>
